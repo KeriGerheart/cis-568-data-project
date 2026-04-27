@@ -1,0 +1,283 @@
+body {
+    margin: 0;
+    font-family: "Roboto Mono", monospace;
+    background: #121212;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 16px;
+}
+
+svg text {
+    font-family: inherit;
+}
+
+.axis text {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    fill: rgba(255, 255, 255, 0.72);
+}
+
+.app {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+header p,
+.chart-note {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.year-control {
+    display: grid;
+    gap: 1rem;
+    flex: 0 0 calc(50% - 2rem);
+}
+
+.control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+#year-range-label {
+    color: #bb86fc;
+    font-weight: 600;
+}
+
+.range-row {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.range-row label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.control-help {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.85rem;
+}
+
+.controls,
+.chart-card {
+    background: #1e1e1e;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow:
+        0 0.25px 1px rgba(0, 0, 0, 0.04),
+        0 0.85px 3px rgba(0, 0, 0, 0.19);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+@media (max-width: 1000px) {
+    .controls {
+        flex-direction: column;
+        gap: 3rem;
+        align-items: stretch;
+    }
+}
+
+.country-control {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(50% - 2rem);
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.chart-grid > .chart-card {
+    min-width: 0;
+}
+
+.chart-card svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.chart-card h2 {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 1000px) {
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.chart-card {
+    animation: fadeUp 360ms ease both;
+}
+
+.chart-card:nth-of-type(2) {
+    animation-delay: 80ms;
+}
+
+.chart-card:nth-of-type(3) {
+    animation-delay: 140ms;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#selected-year {
+    min-width: 4ch;
+    color: #ddd;
+}
+
+select {
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.87);
+    border: 1px solid #545454;
+    border-radius: 0.25rem;
+}
+
+svg {
+    width: 100%;
+    height: 500px;
+}
+
+.axis path,
+.axis line {
+    stroke: rgba(255, 255, 255, 0.22);
+}
+
+.grid line {
+    stroke: #333;
+}
+
+.line {
+    fill: none;
+    stroke-width: 2.5;
+}
+
+.point {
+    stroke: #1e1e1e;
+    stroke-width: 1.5px;
+}
+
+#bar-chart-subtitle {
+    color: #aaa;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+.bar {
+    opacity: 0.9;
+}
+
+.inline-control {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+#comparison-chart-subtitle {
+    color: #aaa;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.comparison-line {
+    stroke-opacity: 0.75;
+    stroke-width: 1.8;
+}
+
+.tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: #222;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+    opacity: 0;
+    transform: translateY(4px);
+    transition:
+        opacity 160ms ease,
+        transform 160ms ease;
+    z-index: 1000;
+}
+
+.tooltip.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.crosshair line {
+    stroke: rgba(255, 255, 255, 0.35);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+    pointer-events: none;
+}
+
+#year-slider {
+    height: 0.5rem;
+}
+
+#year-slider .noUi-connect {
+    background: #bb86fc;
+}
+
+#year-slider .noUi-handle {
+    height: 1.125rem;
+    width: 1.125rem;
+    top: -0.3125rem;
+    right: -0.5625rem; /* half the width */
+    border-radius: 0.5625rem;
+    background: #bb86fc;
+    border: none;
+    box-shadow: none;
+}
+
+#year-slider.noUi-target {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.24);
+    box-shadow: none;
+}
+
+#year-slider .noUi-handle::after,
+#year-slider .noUi-handle::before {
+    content: none;
+}

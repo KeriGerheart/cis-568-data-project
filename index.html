@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Energy Production Over Time</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+            rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.1/nouislider.min.css" />
+    </head>
+    <body>
+        <main class="app">
+            <header>
+                <h1>Energy Production Over Time</h1>
+                <p>Explore how national energy production changes by source.</p>
+            </header>
+
+            <section class="controls">
+                <div class="country-control">
+                    <label for="country-select">Country</label>
+                    <select id="country-select"></select>
+                </div>
+                <div class="year-control">
+                    <div class="control-header">
+                        <label for="year-slider">Year Range</label>
+                        <span id="year-range-label">1900 – 2023</span>
+                    </div>
+
+                    <div id="year-slider"></div>
+
+                    <p class="control-help">Drag the handles to set the first and last year included in all charts.</p>
+                </div>
+            </section>
+
+            <section class="chart-card">
+                <h2>Energy Production by Source</h2>
+                <p class="chart-note">Each line represents an energy source for the selected country.</p>
+                <svg id="chart-1"></svg>
+            </section>
+            <div class="chart-grid">
+                <section class="chart-card">
+                    <h2>Country Comparison by Energy Source</h2>
+
+                    <div class="inline-control">
+                        <label for="source-select">Energy source</label>
+                        <select id="source-select"></select>
+                    </div>
+
+                    <p id="comparison-chart-subtitle"></p>
+                    <svg id="chart-2"></svg>
+                </section>
+                <section class="chart-card">
+                    <h2>Energy Mix for Selected Time Range</h2>
+                    <p id="bar-chart-subtitle"></p>
+                    <svg id="chart-3"></svg>
+                </section>
+            </div>
+            <div id="tooltip" class="tooltip"></div>
+        </main>
+
+        <script src="main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.1/nouislider.min.js"></script>
+    </body>
+</html>
